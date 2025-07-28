@@ -1,22 +1,19 @@
-# Gunakan image Go versi terbaru yang stabil
-FROM golang:1.21-alpine
+# Gunakan base image Golang
+FROM golang:1.21
 
-# Set working directory di dalam container
+# Set direktori kerja di dalam container
 WORKDIR /app
 
-# Copy go.mod dan go.sum terlebih dahulu (untuk cache dependency)
+# Salin go.mod dan go.sum terlebih dahulu
 COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-# Copy semua file ke container
+# Salin semua file project
 COPY . .
 
-# Build binary dari main.go yang ada di folder cmd/
-RUN go build -v -o out ./cmd/main.go
+# Build binary
+RUN go build -o out ./cmd/main.go
 
-# Buka port 8080 (sesuai server kamu)
-EXPOSE 8080
-
-# Jalankan file hasil build
+# Jalankan binary
 CMD ["./out"]
