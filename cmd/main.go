@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/SiNopaal/go-github-actions/internal"
+	"go-github-actions/internal"
 )
 
 func main() {
