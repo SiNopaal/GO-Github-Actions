@@ -1,5 +1,3 @@
-module SiNopaal/GO-Github-Actions.git
+module github.com/SiNopaal/go-github-actions
 
 go 1.24.0
-
-require github.com/google/uuid v1.6.0 // indirect
