@@ -1,20 +1,9 @@
 package main
 
 import (
-	"log"
-	"net/http"
-	"os"
-
-	"go-github-actions/internal"
+    "go-github-actions/internal" // <-- pastikan ini sesuai module
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-
-	http.HandleFunc("/hello", internal.HelloHandler)
-	log.Printf("Server running at http://localhost:%s", port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+    internal.Run()
 }

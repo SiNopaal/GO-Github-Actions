@@ -1,5 +1,5 @@
 # Gunakan base image Golang
-FROM golang:1.21
+FROM golang:1.24
 
 # Set direktori kerja di dalam container
 WORKDIR /app
@@ -14,6 +14,9 @@ COPY . .
 
 # Build binary
 RUN go build -o out ./cmd/main.go
+
+# Buka port aplikasi (default Go biasanya 8080)
+EXPOSE 8080
 
 # Jalankan binary
 CMD ["./out"]
