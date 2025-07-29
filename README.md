@@ -1,92 +1,67 @@
-# 🚀 Go GitHub Actions
+# 🚀 Go GitHub Actions API
+![Go](https://img.shields.io/badge/Go-1.24-blue)
+![Docker](https://img.shields.io/badge/Docker-Ready-green)
+![Railway](https://img.shields.io/badge/Deployed-Railway-%230B0)
 
-![Go CI](https://github.com/SiNopaal/go-github-actions/actions/workflows/go-ci.yml/badge.svg)
+API sederhana berbasis Golang dengan CI/CD GitHub Actions dan auto deploy ke Railway. Proyek ini dirancang sebagai latihan dan portofolio DevOps & Backend Go sederhana.
 
-Sebuah project sederhana yang dibuat untuk mendemonstrasikan bagaimana cara setup **CI/CD (Continuous Integration & Continuous Deployment)** menggunakan **Go (Golang)** dan **GitHub Actions**.
+## 🌐 Live Demo
 
-> Cocok untuk belajar atau jadi template awal project Golang kamu yang lebih besar 🚀
+✅ URL: https://railway.com/invite/QjZ6Pl7AP3L
 
----
+## 🔧 Fitur
 
-## 📦 Teknologi yang Digunakan
+- `GET /hello` — Balikan JSON: `{ "message": "Hello, World!" }`
+- CI/CD otomatis dengan GitHub Actions
+- Build menggunakan Docker
+- Auto deploy ke Railway saat push ke `main`
+- Struktur clean dan siap dikembangkan
 
-- 🧠 **Go (Golang)** — Bahasa backend yang cepat dan efisien
-- ⚙️ **GitHub Actions** — Untuk otomatisasi CI/CD (build, test)
-- 🧪 **go test** — Untuk unit testing sederhana
-- 💡 **Modular dengan `go.mod`**
+## 🧱 Stack yang Digunakan
 
----
+- Golang `v1.24`
+- Docker
+- GitHub Actions (CI/CD)
+- Railway (Hosting/Deploy)
 
-## 🗂️ Struktur Project
+## 📦 Struktur Folder
 
 ```
-go-github-actions/
-├── main.go              # File utama
-├── main_test.go         # Unit test sederhana
-├── go.mod               # Deklarasi module dan dependensi
-├── go.sum               # Checksum keamanan module
-└── .github/
-    └── workflows/
-        └── go-ci.yml    # File GitHub Actions untuk CI
+.
+├── cmd
+│   └── main.go        # Entry point aplikasi
+├── internal
+│   └── handler.go     # Handler endpoint /hello
+├── go.mod
+├── go.sum
+├── Dockerfile         # Build Docker image
+├── .github/workflows
+│   └── deploy.yml     # GitHub Actions deploy ke Railway
+└── README.md
 ```
 
----
-
-## 🧪 Cara Menjalankan Lokal
-
-### 🔧 Build & Run
+## ▶️ Menjalankan Secara Lokal
 
 ```bash
-go mod tidy      # pastikan semua dependensi terpasang
-go run main.go   # menjalankan aplikasi
+go mod tidy
+go run ./cmd/main.go
 ```
 
-### ✅ Test
+Buka: `http://localhost:8080/hello`
+
+## 🐳 Jalankan dengan Docker
 
 ```bash
-go test ./...    # menjalankan semua unit test
+docker build -t go-github-actions .
+docker run -p 8080:8080 go-github-actions
 ```
 
----
+## 🔁 CI/CD Otomatis
 
-## 🔄 CI/CD dengan GitHub Actions
+GitHub Actions akan otomatis:
+- Build project saat push ke `main`
+- Deploy ke Railway dengan `RAILWAY_TOKEN`
 
-Setiap kali ada push ke branch `main` atau pull request baru, GitHub akan menjalankan workflow otomatis yang:
+## 🙋‍♂️ Kontributor
 
-1. Checkout kode dari repo
-2. Setup environment Golang
-3. Jalankan `go mod tidy` untuk mengatur dependensi
-4. Jalankan semua unit test dengan `go test ./...`
-5. Build project dengan `go build`
-
-📂 Lokasi file workflow: `.github/workflows/go-ci.yml`
-
----
-
-## 🖼️ Contoh Output
-
-```bash
-> go run main.go
-Hello from GitHub Actions CI/CD!
-```
-
-```bash
-> go test ./...
-ok  	github.com/SiNopaal/go-github-actions	0.001s
-```
-
----
-
-## 🧑‍💻 Author
-
-Made with ❤️ by [Naufal Maulana Izzuddin](https://github.com/SiNopaal)  
-📍 Patukrejomulyo, Mirit, Kebumen  
-🎓 Telkom University Purwokerto  
-🛠️ Passionate in Go, Web Dev, and DevOps
-
----
-
-## 📌 Ingin Pakai untuk Project Kamu?
-
-Silakan fork project ini, ubah nama module (`go.mod`), dan kembangkan sesuai kebutuhanmu!  
-Butuh bantuan? Feel free to reach out via GitHub or WA 📲
+Made with ❤️ by [@SiNopaal](https://github.com/SiNopaal)
